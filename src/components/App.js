@@ -14,7 +14,9 @@ function App() {
       .then((toys) => setToys(toys))
   }, [])
     
-
+  function addNewToy(newToy){
+    setToys([...toys, newToy])
+  }
 
   function handleClick() {
       setShowForm((showForm) => !showForm);
@@ -23,7 +25,7 @@ function App() {
   return (
     <>
       <Header />
-      {showForm ? <ToyForm /> : null}
+      {showForm ? <ToyForm addNewToy={addNewToy} /> : null}
       <div className="buttonContainer">
         <button onClick={handleClick}>Add a Toy</button>
       </div>
